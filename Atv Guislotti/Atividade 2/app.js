@@ -26,25 +26,62 @@ Restrições:
 -109 <= target <= 109
 Existe apenas uma resposta válida.*/
 
-var nums = [], target, quantia;
+var nums = [], target, quantia, soma = 0, posicao = [];
 
 target = prompt("Digite o valor alvo: ");
 quantia = prompt("Digite a quantia a ser somada: ");
 
+target = parseInt(target);
+quantia = parseInt(quantia);
+
+document.write("Nums = [");
 for(i = 0; i < quantia; i++)
 {
      nums[i] = prompt("Digite os valores a serem somados: ");
+     nums[i] = parseInt(nums[i]);
      while(nums[i] == numsIguais)
      {
           nums[i] = prompt("Esse valor já foi usado! Digite um valor diferente: ");
      }
      var numsIguais = nums[i];
-}
 
-for(i = 0; i < quantia; i++)
-{
-     if(target < nums[i])
+     document.write(nums[i]);
+     if(i != quantia - 1)
      {
-          
+          document.write(" + ");
      }
 }
+document.write("] <br> Alvo = " + target + "<br><br>");
+
+document.write("Saída: [");
+for(i = 0; i < quantia; i++)
+{
+     if(soma < target)
+     {
+          soma += nums[i];
+          posicao[i] = i;
+     }
+     if(soma > target)
+     {
+          soma -= nums[i];
+          posicao[i] = null;
+     }
+
+     if(posicao[i] == null)
+     {
+          continue;
+     }
+
+     document.write(posicao[i]);
+
+     if(soma != target)
+     {
+          document.write(", ");
+     }
+
+     if(soma == target)
+     {
+          break;
+     }
+}
+document.write("]");
