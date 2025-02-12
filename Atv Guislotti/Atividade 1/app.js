@@ -5,10 +5,14 @@ A função deverá retornar uma nova lista de produtos que estejam dentro da fai
 
 function filtragem()
 {
-     var id = [1, 2, 3], produto = [], valor = [];
+     var id = [], produto = [], valor = [], quantia;
+
+     quantia = prompt("Digite a quantidade de produtos: ");
+     quantia = parseInt(quantia);
      
-     for(i = 0; i < 3; i++)
+     for(i = 0; i < quantia; i++)
      {
+          id[i] = i + 1;
           document.write("ID = " + id[i] + " | ");
           produto[i] = prompt("Digite o nome do produto: ");
           valor[i] = prompt("Digite o valor do produto: ");
@@ -26,8 +30,9 @@ function filtragem()
      valorMax = parseInt(valorMax);
 
      document.write("Filtragem: <br> Valor Mínimo: R$ " + valorMin + "<br>Valor Máximo: R$ " + valorMax + "<br>");
-     for(i = 0; i < 3; i++)
+     for(i = 0; i < quantia; i++)
      {
+          id[i] = i + 1;
           if(valor[i] >= valorMin && valor[i] <= valorMax)
           {
                document.write('ID = ' + id[i] + ' | Produto: ' + produto[i] + ' | Valor: ' + valor[i] + '<br>');
